@@ -108,5 +108,5 @@
   },
   "include": [
     "src/**/*.ts"
-, "tests/product.service.spec.ts", "tests/main.ts", "tests/teste.ts"  ]
+, "tests/product.service.spec.ts", "src/domain/@shared/tests/main.ts", "tests/teste.ts"  ]
 }
