@@ -112,8 +112,8 @@ describe("Order repository tests", () => {
         });
 
         expect(orderModel?.toJSON()).toStrictEqual({
-            id: "123",
-            customerId: "123",
+            id: order.id,
+            customerId: order.customerId,
             total: order.total(),
             items: [
                 { 
@@ -121,8 +121,8 @@ describe("Order repository tests", () => {
                     name: orderItem.name, 
                     price: orderItem.price, 
                     quantity: orderItem.quantity,
-                    orderId: "123",
-                    productId: "123"
+                    orderId: order.id,
+                    productId: orderItem.productId
                 }
             ] 
         });
@@ -131,7 +131,7 @@ describe("Order repository tests", () => {
             "1",
             product.name,
             product.price,
-            15,
+            15, 
             product.id
         );
 
@@ -144,17 +144,17 @@ describe("Order repository tests", () => {
         });
 
         expect(orderModel2?.toJSON()).toStrictEqual({
-            id: "123",
-            customerId: "123",
+            id: order.id,
+            customerId: order.customerId,
             total: order.total(),
             items: [
                 { 
-                    id: orderItem.id, 
-                    name: orderItem.name, 
-                    price: orderItem.price, 
-                    quantity: 15,
-                    orderId: "123",
-                    productId: "123"
+                    id: orderItem2.id, 
+                    name: orderItem2.name, 
+                    price: orderItem2.price, 
+                    quantity: orderItem2.quantity,
+                    orderId: order.id,
+                    productId: orderItem.productId
                 }
             ] 
         });
