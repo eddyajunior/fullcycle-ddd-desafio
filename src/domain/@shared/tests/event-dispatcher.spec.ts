@@ -7,10 +7,10 @@ import WriteConsoleWhenCustomerAddressIsUpdatedHandler from "../../customer/even
 
 import ProductCreatedEvent from "../../product/events/product-created.event";
 import CustomerCreatedEvent from "../../customer/events/customer-created.event"
-import CustomerRepository from "../../customer/infrastructure/repositories/customer.repository";
+import CustomerRepository from "../../../infrastructure/customer/repository/customer.repository"
 import Customer from "../../customer/entities/customer";
 import Address from "../../customer/value-objects/address";
-import CustomerModel from "../../customer/infrastructure/db/sequelize/model/customer.model"
+import CustomerModel from "../../../infrastructure/customer/repository/sequelize/customer.model"
 import CustomerAddressUpdatedEvent from "../../customer/events/customer-address-updated.event"
 
 

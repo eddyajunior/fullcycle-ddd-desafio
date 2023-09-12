@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize-typescript"
 
-import CustomerModel from "../infrastructure/db/sequelize/model/customer.model";
+import CustomerModel from "../../../infrastructure/customer/repository/sequelize/customer.model";
 import Customer from "../entities/customer"
-import CustomerRepository from "../infrastructure/repositories/customer.repository";
+import CustomerRepository from "../../../infrastructure/customer/repository/customer.repository"
 import Address from "../value-objects/address"
 
 describe("Customer repository tests", () => {
