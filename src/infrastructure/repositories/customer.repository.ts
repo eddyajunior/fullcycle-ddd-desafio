@@ -1,5 +1,5 @@
 import Customer from "../../domain/entities/customer";
-import CustomerRepositoryInterface from "../../domain/interfaces/customer-repository.interface";
+import CustomerRepositoryInterface from "../../domain/interfaces/repositories/customer-repository.interface";
 import CustomerModel from "../db/sequelize/model/customer.model";
 import Address from "../../domain/entities/address";
 
@@ -17,7 +17,6 @@ export default class CustomerRepository implements CustomerRepositoryInterface
             active: entity.isActive(),
             rewardPoints: entity.rewardPoints
         });
-
     }
     
     async update(entity: Customer): Promise<void> {

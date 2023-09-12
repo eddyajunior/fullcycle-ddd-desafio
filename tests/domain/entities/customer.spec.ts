@@ -43,7 +43,7 @@ describe("Customer unit tests", () => {
         // Assert
         expect(customer.isActive()).toBe(true);
 
-    })    
+    })   
 
     it("Should deactivate customer", () => {
         // Arrange
