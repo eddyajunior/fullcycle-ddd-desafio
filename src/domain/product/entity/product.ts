@@ -1,9 +1,10 @@
-export default class Product{
+import ProductInterface from "./product.interface";
+
+export default class Product implements ProductInterface{
     private _id: string;
     private _name: string;
     private _price: number;
     private _quantity!: number;
-    private _total: number;
 
     constructor(
         id:string, 
