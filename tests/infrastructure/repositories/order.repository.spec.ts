@@ -212,6 +212,9 @@ describe("Order repository tests", () => {
 
         const product2 = new Product("2", "Product 2", 25, 1);
         await productRepository.create(product2);
+        
+        const product3 = new Product("3", "Product 3", 125, 1);
+        await productRepository.create(product3);
 
         const orderItem = new OrderItem(
             "1",
@@ -229,15 +232,25 @@ describe("Order repository tests", () => {
             product2.id
         ); 
 
+        const orderItem3 = new OrderItem(
+            "3",
+            product3.name,
+            product3.price,
+            product3.quantity,
+            product3.id
+        ); 
+
         const order = new Order("1", "1", [orderItem]);
         const order2 = new Order("2", "1", [orderItem2]);
+        const order3 = new Order("3", "1", [orderItem3]);
 
         const orderRepository = new OrderRepository();        
         await orderRepository.create(order);
         await orderRepository.create(order2);
+        await orderRepository.create(order3);
 
         const orderModels = await orderRepository.findAll();
-        const orders = [order, order2];
+        const orders = [order, order2, order3];
 
         expect(orderModels).toEqual(orders);
     });    
