@@ -3,6 +3,7 @@ import { Sequelize } from "sequelize-typescript"
 import EventDispatcher from "../../@shared/event-dispatcher";
 import SendEmailWhenProductIsCreatedHandler from "../../product/events/handler/send-email-when-product-is-created.handler"
 import WriteConsoleWhenCustomerIsCreatedHandler from "../../customer/events/handler/write-console-log-when-customer-is-created.handler";
+import WriteConsoleWhenCustomerIsCreatedHandler2 from "../../customer/events/handler/write-console-log2-when-customer-is-created.handler";
 import WriteConsoleWhenCustomerAddressIsUpdatedHandler from "../../customer/events/handler/write-console-log-when-customer-address-is-updated.handler";
 
 import ProductCreatedEvent from "../../product/events/product-created.event";
@@ -131,15 +132,26 @@ describe("Domain events tests", () => {
         });
 
         const eventName = "CustomerCreatedEvent";
+        
         const eventDispatcher = new EventDispatcher();
+        const eventDispatcher2 = new EventDispatcher();
+        
         const eventHandler = new WriteConsoleWhenCustomerIsCreatedHandler();
+        const eventHandler2 = new WriteConsoleWhenCustomerIsCreatedHandler2();
+        
         const spyEventHandler = jest.spyOn(eventHandler, "handler");
+        const spyEventHandler2 = jest.spyOn(eventHandler2, "handler");
 
         eventDispatcher.register(eventName, eventHandler);
+        eventDispatcher2.register(eventName, eventHandler2);
 
         expect(
             eventDispatcher.getEventHandlers[eventName][0]
         ).toMatchObject(eventHandler);
+
+        expect(
+            eventDispatcher2.getEventHandlers[eventName][0]
+        ).toMatchObject(eventHandler2);
 
         const customerCreatedEvent = new CustomerCreatedEvent({
             id: customer.id,
@@ -147,8 +159,10 @@ describe("Domain events tests", () => {
         });
 
         eventDispatcher.notify(customerCreatedEvent);
+        eventDispatcher2.notify(customerCreatedEvent);
 
         expect(spyEventHandler).toHaveBeenCalled();
+        expect(spyEventHandler2).toHaveBeenCalled();
     })
 
     it("Should notify when customer address is changed", async () => {
