@@ -2,17 +2,17 @@ import { Sequelize } from "sequelize-typescript"
 
 import EventDispatcher from "../../@shared/event-dispatcher";
 import SendEmailWhenProductIsCreatedHandler from "../../product/events/handler/send-email-when-product-is-created.handler"
-import WriteConsoleWhenCustomerIsCreatedHandler from "../../customer/events/handler/write-console-log-when-customer-is-created.handler";
-import WriteConsoleWhenCustomerIsCreatedHandler2 from "../../customer/events/handler/write-console-log2-when-customer-is-created.handler";
-import WriteConsoleWhenCustomerAddressIsUpdatedHandler from "../../customer/events/handler/write-console-log-when-customer-address-is-updated.handler";
+import WriteConsoleWhenCustomerIsCreatedHandler from "./handler/write-console-log-when-customer-is-created.handler";
+import WriteConsoleWhenCustomerIsCreatedHandler2 from "./handler/write-console-log2-when-customer-is-created.handler";
+import WriteConsoleWhenCustomerAddressIsUpdatedHandler from "./handler/write-console-log-when-customer-address-is-updated.handler";
 
 import ProductCreatedEvent from "../../product/events/product-created.event";
-import CustomerCreatedEvent from "../../customer/events/customer-created.event"
+import CustomerCreatedEvent from "./customer-created.event"
 import CustomerRepository from "../../../infrastructure/customer/repository/customer.repository"
-import Customer from "../../customer/entities/customer";
-import Address from "../../customer/value-objects/address";
+import Customer from "../entities/customer";
+import Address from "../value-objects/address";
 import CustomerModel from "../../../infrastructure/customer/repository/sequelize/customer.model"
-import CustomerAddressUpdatedEvent from "../../customer/events/customer-address-updated.event"
+import CustomerAddressUpdatedEvent from "./customer-address-updated.event"
 
 
 describe("Domain events tests", () => {
